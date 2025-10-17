@@ -1,0 +1,29 @@
+/* skills-carousel.css - Hybrid version with minimal CSS */
+
+/* Animation keyframes - can't be done in Tailwind */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Animation properties - need CSS for custom properties and will-change */
+.skills-track {
+  will-change: transform;
+  animation: scroll-left var(--scroll-duration) linear infinite;
+}
+
+.skills-track.reverse {
+  animation-name: scroll-right;
+}
+
+/* Pause animation on hover - complex selector needs CSS */
+.group:hover .skills-track,
+.group:focus-within .skills-track {
+  animation-play-state: paused;
+  cursor: grab;
+}
