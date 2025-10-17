@@ -1,0 +1,159 @@
+[
+  {
+    "id": "pixlyzer",
+    "title": "Pixlyzer",
+    "shortDesc": "Image toolkit for conversion, compression, resizing and batch operations.",
+    "fullDesc": "A comprehensive image processing toolkit built with React frontend and Python backend. Features include format conversion, intelligent compression, batch processing, and advanced resizing algorithms. The application handles multiple image formats and provides a user-friendly interface for complex image operations.",
+    "image": "/assets/pixlyzer-banner.jpg",
+    "images": [
+      "/assets/pixlyzer-banner.jpg",
+      "/assets/pixlyzer-screenshot-1.jpg", 
+      "/assets/pixlyzer-screenshot-2.jpg"
+    ],
+    "tags": ["React", "Tailwind CSS", "Python", "FastAPI", "Image Processing"],
+    "category": "Web Application",
+    "status": "completed",
+    "github": "https://github.com/starkSV/pixlyzer",
+    "demo": "https://pixlyzer.tech-latest.com/",
+    "techStack": {
+      "frontend": ["React", "Tailwind CSS", "Axios"],
+      "backend": ["Python", "FastAPI", "PIL"],
+      "deployment": ["Docker", "Hetzner"]
+    },
+    "features": [
+      "Batch image processing",
+      "Multiple format conversion",
+      "Intelligent compression",
+      "Custom resize algorithms",
+      "Real-time preview",
+      "Progress tracking"
+    ],
+    "challenges": "Handling large file uploads and maintaining image quality during compression.",
+    "timeline": "2 months",
+    "year": 2025
+  },
+  {
+    "id": "bottleneck-calculator",
+    "title": "Bottleneck Calculator",
+    "shortDesc": "Free tool to identify CPU/GPU bottlenecks across different resolutions.",
+    "fullDesc": "An advanced bottleneck calculator that analyzes hardware compatibility across 1080p, 1440p, and 4K resolutions. Uses comprehensive performance databases and algorithms to predict potential bottlenecks and suggest optimal hardware combinations for gaming and productivity workflows.",
+    "image": "/assets/bottleneck-banner.jpg",
+    "images": [
+      "/assets/bottleneck-banner.jpg",
+      "/assets/bottleneck-screenshot-1.jpg"
+    ],
+    "tags": ["React", "Tailwind CSS", "Python", "Data Analysis", "Charts"],
+    "category": "Calculator Tool",
+    "status": "completed",
+    "github": "https://github.com/starkSV/bottleneck-calculator",
+    "demo": "https://bottleneck.tech-latest.com/",
+    "techStack": {
+      "frontend": ["React", "Tailwind CSS", "Chart.js", "Recharts"],
+      "backend": ["Python", "Pandas", "NumPy"],
+      "data": ["Hardware Performance DB", "Benchmark Data"],
+      "deployment": ["Docker", "Hetzner"]
+    },
+    "features": [
+      "Multi-resolution analysis",
+      "Hardware compatibility check",
+      "Performance predictions",
+      "Upgrade suggestions",
+      "Interactive charts",
+      "Share results"
+    ],
+    "challenges": "Gathering accurate hardware performance data and creating reliable prediction algorithms.",
+    "timeline": "1 months",
+    "year": 2025
+  },
+  {
+    "id": "msdl",
+    "title": "MSDL",
+    "shortDesc": "Access official Microsoft Windows versions directly.",
+    "fullDesc": "A streamlined interface to access official, up-to-date, and legacy versions of Microsoft Windows operating systems. Provides direct download links without registration requirements, making it easier for developers and IT professionals to access Windows ISOs for legitimate purposes.",
+    "image": "/assets/msdl-banner.jpg",
+    "images": [
+      "/assets/msdl-banner.jpg",
+      "/assets/msdl-screenshot-1.jpg"
+    ],
+    "tags": ["React", "Tailwind CSS", "API Integration"],
+    "category": "Resource Tool",
+    "status": "completed",
+    "github": "https://github.com/starkSV/msdl",
+    "demo": "https://msdl.tech-latest.com/",
+    "techStack": {
+      "frontend": ["React", "Tailwind CSS"],
+      "backend": ["Node.js", "Express"],
+      "apis": ["Microsoft API", "Custom Scraping"]
+    },
+    "features": [
+      "Latest Windows versions",
+      "Legacy OS access",
+      "Direct download links",
+      "All available languages",
+      "No registration required",
+      "Related news",
+      "Installation guide"
+    ],
+    "challenges": "Maintaining up-to-date links and ensuring compatibility with Microsoft's changing APIs.",
+    "timeline": "1 month",
+    "year": 2025
+  },
+  {
+    "id": "portfolio-v3",
+    "title": "Portfolio v3",
+    "shortDesc": "Modern portfolio website built with React and Tailwind.",
+    "fullDesc": "A complete rebuild of my personal portfolio using modern web technologies. Features responsive design, smooth animations, dynamic content loading, and optimized performance. Built with accessibility and SEO in mind.",
+    "image": "/assets/portfolio-banner.jpg",
+    "images": [
+      "/assets/portfolio-banner.jpg"
+    ],
+    "tags": ["React", "Tailwind CSS", "Vite", "Performance"],
+    "category": "Portfolio",
+    "status": "ongoing",
+    "github": "https://github.com/starkSV/starkSV-new",
+    "demo": "#",
+    "techStack": {
+      "frontend": ["React", "Tailwind CSS", "Vite"],
+      "features": ["RSS Integration", "Contact Forms", "Blog System"],
+      "optimization": ["Image Optimization", "Bundle Splitting", "SEO"]
+    },
+    "features": [
+      "Responsive design",
+      "RSS blog integration",
+      "Contact form with validation",
+      "Project showcases",
+      "Skills carousel",
+      "Performance optimized"
+    ],
+    "challenges": "Migrating from vanilla HTML/CSS/JS while maintaining design consistency.",
+    "timeline": "2 months",
+    "year": 2025
+  },
+  {
+    "id": "minxlink",
+    "title": "MinxLink",
+    "shortDesc": "AI-powered tool for shortening URL.",
+    "fullDesc": "MinxLink is a powerful and modern URL shortener designed to make link management effortless. It allows users to create, manage, and track shortened URLs efficiently.",
+    "image": "/assets/ai-generator-banner.jpg",
+    "images": [],
+    "tags": ["React", "FastAPI", "Bootstrap", "OpenAI", "Machine Learning", "PostgreSQL"],
+    "category": "AI Tool",
+    "status": "planned",
+    "github": "#",
+    "demo": "#",
+    "techStack": {
+      "frontend": ["React", "Bootstrap", "Tailwind CSS"],
+      "backend": ["Python", "FastAPI", "OpenAI API"],
+      "database": ["PostgreSQL", "Redis"]
+    },
+    "features": [
+      "AI-powered url shortner",
+      "Advanced Stats",
+      "Customizable url alis",
+      "Custom domain"
+    ],
+    "challenges": "Balancing AI creativity with brand consistency and managing API costs.",
+    "timeline": "4 months",
+    "year": 2025
+  }
+]
