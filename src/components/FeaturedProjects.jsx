@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo } from "react";
+import { Link } from "react-router-dom";
 
 const PROJECTS = [
   {
@@ -233,8 +234,8 @@ export default function FeaturedProjects() {
 
       {/* View All Projects CTA */}
       <footer className="mt-16 text-center">
-        <a 
-          href="/projects" 
+        <Link  
+          to="/projects" 
           className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-100 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
           aria-label="View all projects page"
         >
@@ -242,7 +243,7 @@ export default function FeaturedProjects() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
-        </a>
+        </Link>
       </footer>
     </section>
   );

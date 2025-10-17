@@ -93,7 +93,7 @@ const NotFound = () => (
 function App() {
   return (
     <ErrorBoundary>
-      <Router basename="/starkSV.github.io"> 
+      <Router basename="/"> 
         <div className="min-h-screen text-white relative overflow-hidden">
           {/* Animated Background */}
           <AnimatedGradientBackground />
