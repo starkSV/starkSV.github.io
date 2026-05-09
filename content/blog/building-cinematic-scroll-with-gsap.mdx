@@ -1,0 +1,73 @@
+---
+title: Building Cinematic Scroll Experiences with GSAP
+date: 2025-01-10
+description: How to create full-page scroll-driven animations that feel like cinema using GSAP ScrollTrigger.
+tags: [gsap, animation, react, frontend]
+published: true
+---
+
+# Building Cinematic Scroll Experiences with GSAP
+
+Scroll-driven animations have evolved from simple parallax to full cinematic sequences. Let me show you how.
+
+## The Core Concept
+
+The trick is to use a single ScrollTrigger that pins the entire viewport, then map scroll progress to a GSAP timeline. Your "sections" aren't actual scrollable sections — they're absolutely-positioned layers that GSAP shows and hides.
+
+```typescript
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: containerRef.current,
+    start: 'top top',
+    end: '+=10000',    // 10000px of scroll distance
+    pin: true,
+    scrub: 1.1,        // slight lag for cinematic feel
+    anticipatePin: 1,
+  },
+})
+```
+
+## The Card Rise Animation
+
+```typescript
+// Card starts below the viewport
+gsap.set(card, { y: window.innerHeight + 200 })
+
+// Rises into frame
+tl.to(card, { y: 0, duration: 2, ease: 'power3.out' }, 0.5)
+
+// Then expands to fill the screen
+tl.to(card, {
+  width: window.innerWidth,
+  height: window.innerHeight,
+  borderRadius: 0,
+  duration: 2,
+  ease: 'power3.inOut',
+}, 2.5)
+```
+
+## Managing Sections
+
+```typescript
+// All sections start invisible
+gsap.set([s1, s2, s3], { autoAlpha: 0, position: 'absolute', inset: 0 })
+
+// Fade each section in and out at the right scroll position
+tl.to(s1, { autoAlpha: 1, duration: 0.5 }, 4.5)
+tl.to(s1, { autoAlpha: 0, duration: 0.5 }, 7.5)
+
+tl.to(s2, { autoAlpha: 1, duration: 0.5 }, 8.0)
+```
+
+## Smooth Scroll with Lenis
+
+```typescript
+import Lenis from 'lenis'
+
+const lenis = new Lenis()
+lenis.on('scroll', ScrollTrigger.update)
+gsap.ticker.add((time) => lenis.raf(time * 1000))
+gsap.ticker.lagSmoothing(0)
+```
+
+The result is buttery-smooth scroll that feeds directly into your GSAP timeline.

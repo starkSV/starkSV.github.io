@@ -1,0 +1,61 @@
+[
+  {
+    "slug": "pixlyzer",
+    "name": "Pixlyzer",
+    "tagline": "AI-powered image analysis and metadata extraction",
+    "description": "Placeholder description — replace with real content.",
+    "url": "https://pixlyzer.example.com",
+    "repo": "https://github.com/starkSV/pixlyzer",
+    "status": "live",
+    "year": 2024,
+    "tech": ["Next.js", "Python", "OpenAI", "Cloudflare"],
+    "featured": true,
+    "mockupUrl": "pixlyzer.app"
+  },
+  {
+    "slug": "bottleneck-calculator",
+    "name": "Bottleneck Calculator",
+    "tagline": "Find the weakest link in your PC build instantly",
+    "description": "Placeholder description — replace with real content.",
+    "url": "https://bottleneck.example.com",
+    "repo": "https://github.com/starkSV/bottleneck-calc",
+    "status": "live",
+    "year": 2024,
+    "tech": ["React", "TypeScript", "Tailwind"],
+    "featured": true,
+    "mockupUrl": "bottleneck-calc.app"
+  },
+  {
+    "slug": "msdl",
+    "name": "MSDL",
+    "tagline": "Microsoft software direct download links — no account needed",
+    "description": "Placeholder description — replace with real content.",
+    "url": "https://msdl.example.com",
+    "repo": "https://github.com/starkSV/msdl",
+    "status": "live",
+    "year": 2023,
+    "tech": ["Next.js", "TypeScript", "Cloudflare Workers"],
+    "featured": true,
+    "mockupUrl": "msdl.app"
+  },
+  {
+    "slug": "project-4",
+    "name": "Project Four",
+    "tagline": "Placeholder — replace with real project",
+    "description": "Placeholder description — replace with real content.",
+    "status": "live",
+    "year": 2023,
+    "tech": ["React", "Node.js"],
+    "featured": false
+  },
+  {
+    "slug": "project-5",
+    "name": "Project Five",
+    "tagline": "Placeholder — replace with real project",
+    "description": "Placeholder description — replace with real content.",
+    "status": "live",
+    "year": 2023,
+    "tech": ["TypeScript", "API"],
+    "featured": false
+  }
+]

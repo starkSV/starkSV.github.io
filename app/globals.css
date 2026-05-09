@@ -1,0 +1,137 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── Brand design system ─────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --sv-bg:        #030509;
+  --sv-card-from: #152d6b;
+  --sv-card-to:   #06090f;
+  --sv-text:      #e4eeff;
+  --sv-muted:     rgba(200, 218, 255, 0.44);
+  --sv-dim:       rgba(200, 218, 255, 0.11);
+  --sv-accent:    #38bdf8;
+  --sv-accent-2:  #818cf8;
+  --sv-border:    rgba(255, 255, 255, 0.06);
+  --sv-border-hi: rgba(255, 255, 255, 0.13);
+
+  /* shadcn tokens — mapped to our dark theme always */
+  --background:              #030509;
+  --foreground:              #e4eeff;
+  --card:                    #06090f;
+  --card-foreground:         #e4eeff;
+  --popover:                 #0c1425;
+  --popover-foreground:      #e4eeff;
+  --primary:                 #38bdf8;
+  --primary-foreground:      #030509;
+  --secondary:               #152d6b;
+  --secondary-foreground:    #e4eeff;
+  --muted:                   rgba(200, 218, 255, 0.08);
+  --muted-foreground:        rgba(200, 218, 255, 0.44);
+  --accent:                  #38bdf8;
+  --accent-foreground:       #030509;
+  --destructive:             oklch(0.577 0.245 27.325);
+  --border:                  rgba(255, 255, 255, 0.06);
+  --input:                   rgba(255, 255, 255, 0.08);
+  --ring:                    #38bdf8;
+  --radius:                  0.625rem;
+}
+
+@theme inline {
+  /* brand tokens */
+  --color-sv-bg:        var(--sv-bg);
+  --color-sv-card-from: var(--sv-card-from);
+  --color-sv-card-to:   var(--sv-card-to);
+  --color-sv-text:      var(--sv-text);
+  --color-sv-muted:     var(--sv-muted);
+  --color-sv-dim:       var(--sv-dim);
+  --color-sv-accent:    var(--sv-accent);
+  --color-sv-accent-2:  var(--sv-accent-2);
+  --color-sv-border:    var(--sv-border);
+  --color-sv-border-hi: var(--sv-border-hi);
+  /* shadcn tokens */
+  --color-background:   var(--background);
+  --color-foreground:   var(--foreground);
+  --color-primary:      var(--primary);
+  --color-secondary:    var(--secondary);
+  --color-border:       var(--border);
+  --color-ring:         var(--ring);
+  --color-accent:       var(--accent);
+  --color-muted:        var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  /* fonts */
+  --font-syne: var(--font-syne);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}
+
+/* ── Base resets ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background: var(--sv-bg);
+  color: var(--sv-text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none; /* custom cursor overrides */
+}
+
+* {
+  cursor: none !important;
+}
+
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: var(--sv-bg); }
+::-webkit-scrollbar-thumb  { background: var(--sv-border-hi); border-radius: 2px; }
+
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+  color: var(--sv-text);
+}
+
+/* Film grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.04); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius, 80px)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-radius, 80px)) rotate(-360deg); }
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}

@@ -1,0 +1,45 @@
+---
+title: Getting Started with Edge Functions
+date: 2024-11-15
+description: A practical guide to building fast, globally distributed functions on Cloudflare Workers.
+tags: [cloudflare, edge, typescript]
+published: true
+---
+
+# Getting Started with Edge Functions
+
+Edge functions let you run server-side code as close to your users as possible. Here's how to get started.
+
+## Why Edge?
+
+Traditional server deployments put your code in one or a few regions. Edge deploys to hundreds of locations globally — requests are handled within milliseconds of the user.
+
+## Hello World on Cloudflare Workers
+
+```typescript
+export default {
+  async fetch(request: Request): Promise<Response> {
+    return new Response('Hello from the edge!', {
+      headers: { 'content-type': 'text/plain' },
+    })
+  },
+}
+```
+
+## Working with the Request
+
+```typescript
+export default {
+  async fetch(request: Request): Promise<Response> {
+    const url = new URL(request.url)
+    const name = url.searchParams.get('name') ?? 'world'
+    return Response.json({ message: `Hello, ${name}!` })
+  },
+}
+```
+
+## Next Steps
+
+- Explore [Cloudflare Workers KV](https://developers.cloudflare.com/kv/) for key-value storage
+- Try [Durable Objects](https://developers.cloudflare.com/durable-objects/) for stateful edge logic
+- Use [D1](https://developers.cloudflare.com/d1/) for SQLite at the edge
