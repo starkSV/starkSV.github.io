@@ -125,8 +125,8 @@ export default function CinemaScroll({ projects }: CinemaScrollProps) {
 
   return (
     <>
-      {/* ── Scroll space (just provides scroll distance for ScrollTrigger) ── */}
-      <div ref={wrapRef} style={{ height: '10000px' }} />
+      {/* ── Scroll space — ScrollTrigger end:"+=10000" creates its own pin spacer; 1px here avoids doubling ── */}
+      <div ref={wrapRef} style={{ height: '1px' }} />
 
       {/* ── Hero text — fixed, always behind card ─────────────────────────── */}
       <div
