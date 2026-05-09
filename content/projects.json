@@ -2,13 +2,13 @@
   {
     "slug": "fps-calculator",
     "name": "FPS Calculator",
-    "tagline": "Predicts real-world gaming FPS for any CPU + GPU combo across 50+ titles.",
-    "description": "Predicts gaming frame rates for any CPU + GPU combination across 50+ AAA titles using a calibrated Amdahl frame-time model at 1080p, 1440p, and 4K. Built with a FastAPI backend backed by PostgreSQL and Alembic migrations, a React 19 + Tailwind frontend with i18next localisation, and deployed via Coolify blue-green on Docker. Automated with GitHub Actions (pytest).",
+    "tagline": "Predicts real-world gaming FPS for any CPU + GPU combo across 50+ AAA titles.",
+    "description": "Predicts gaming frame rates for any CPU + GPU combination across 50+ AAA titles at 1080p, 1440p, and 4K — using a calibrated Amdahl frame-time model backed by real benchmark data. FastAPI + PostgreSQL backend with Alembic migrations and hardware-score caching; React 19 + Vite + Tailwind frontend with i18n via i18next. Deployed with Coolify blue-green on Docker behind a Cloudflare tunnel, with CI via GitHub Actions.",
     "url": "https://fps.tech-latest.com",
     "repo": "https://github.com/starkSV/fps-calculator",
     "status": "live",
     "year": 2025,
-    "tech": ["FastAPI", "Python", "PostgreSQL", "React 19", "Tailwind CSS", "Docker", "Nginx"],
+    "tech": ["FastAPI", "Python", "PostgreSQL", "Alembic", "React 19", "TypeScript", "Tailwind CSS", "Docker", "Cloudflare"],
     "featured": true,
     "mockupUrl": "fps.tech-latest.com",
     "images": {
@@ -16,47 +16,45 @@
     }
   },
   {
-    "slug": "msdl",
-    "name": "MSDL",
-    "tagline": "Get official Windows ISOs directly from Microsoft's CDN — no account, no MCT.",
-    "description": "Open-source tool for downloading official Windows ISO files directly from Microsoft's CDN, bypassing the Media Creation Tool entirely. Supports 38 languages and ARM64/x64/x86 architectures. Frontend in React 19 + TypeScript + Tailwind v4, backend in Go 1.22 using stdlib net/http with RWMutex-cached session parsing. Deployed on a VPS via direct HTTP.",
-    "url": "https://msdl.tech-latest.com",
-    "repo": "https://github.com/starkSV/windows-iso-downloader",
-    "status": "live",
-    "year": 2024,
-    "tech": ["Go", "React 19", "TypeScript", "Tailwind CSS v4", "Framer Motion"],
-    "featured": true,
-    "mockupUrl": "msdl.tech-latest.com",
-    "images": {
-      "banner": "/assets/msdl-banner.jpg",
-      "screenshots": ["/assets/msdl-screenshot-1.jpg"]
-    }
-  },
-  {
     "slug": "pixlyzer",
     "name": "Pixlyzer",
-    "tagline": "Professional media suite — image tools, PDF manipulation, and AI upscaling.",
-    "description": "Professional-grade media processing suite with a React frontend and FastAPI backend. Handles image manipulation, PDF tools, AI-powered upscaling via Real-ESRGAN, and background removal via Rembg — all processed with cloud GPU via the Replicate API. Includes a companion React Native mobile app. Features an AMOLED dark theme with custom Tailwind tokens.",
+    "tagline": "Professional media suite — image conversion, PDF tools, and AI upscaling.",
+    "description": "Full-stack media processing suite live at pixlyzer.com. Handles client-side image conversion (HEIC, AVIF, PNG, JPEG) via WebAssembly (@jsquash) with zero server round-trips for basic ops, plus server-side AI upscaling via Real-ESRGAN on Replicate and background removal via Celery workers. FastAPI + SQLite backend with Clerk auth; pyvips and pypdfium2 for server-side processing.",
+    "url": "https://pixlyzer.com",
     "repo": "https://github.com/starkSV/pixlyzer-v2",
     "status": "live",
     "year": 2024,
-    "tech": ["FastAPI", "Python", "React", "React Native", "Replicate AI", "SQLite"],
+    "tech": ["FastAPI", "Python", "Replicate AI", "Celery", "React 19", "TypeScript", "Tailwind CSS", "Clerk", "WebAssembly"],
     "featured": true,
-    "mockupUrl": "pixlyzer.app",
+    "mockupUrl": "pixlyzer.com",
     "images": {
       "banner": "/assets/pixlyzer-banner.jpg",
       "screenshots": ["/assets/pixlyzer-screenshot-1.jpg", "/assets/pixlyzer-screenshot-2.jpg"]
     }
   },
   {
+    "slug": "minxlink",
+    "name": "Minxlink",
+    "tagline": "Link management platform — short URLs, analytics dashboard, geo-routing, and payments.",
+    "description": "Multi-tenant link management platform at minxl.ink. Shortens URLs with custom slugs and tracks clicks with a full analytics dashboard (Recharts). Supports geo-based routing, device routing, A/B test splits, and Cloudflare KV for edge redirects. Clerk for multi-tenant auth, Razorpay for subscription payments, Svix for webhook delivery. FastAPI + PostgreSQL + Redis backend.",
+    "url": "https://minxl.ink",
+    "repo": "https://github.com/starkSV/minxlink-v2",
+    "status": "live",
+    "year": 2025,
+    "tech": ["FastAPI", "PostgreSQL", "Redis", "Cloudflare KV", "React 18", "TypeScript", "Clerk", "Razorpay"],
+    "featured": true,
+    "mockupUrl": "minxl.ink",
+    "images": {}
+  },
+  {
     "slug": "bottleneck-calculator",
     "name": "Bottleneck Calculator",
-    "tagline": "Visualise CPU/GPU bottlenecks and get upgrade suggestions for balanced PC builds.",
-    "description": "Web-based tool that analyses CPU/GPU combinations, computes bottleneck percentages, and recommends balanced upgrades. React + Vite + Tailwind frontend backed by a FastAPI Python service serving calibrated JSON benchmark datasets. Shares the same benchmark API layer as FPS Calculator.",
+    "tagline": "See exactly how much your CPU bottlenecks your GPU — and what to upgrade.",
+    "description": "Estimates CPU/GPU bottleneck percentage for gaming builds and recommends balanced upgrades. React 19 + Vite + Tailwind frontend with Recharts visualisations and i18next localisation; FastAPI + PostgreSQL + SQLAlchemy backend with rate limiting via slowapi. Shares benchmark dataset infrastructure with the FPS Calculator.",
     "repo": "https://github.com/starkSV/bottleneck-calc",
     "status": "live",
     "year": 2024,
-    "tech": ["React", "Vite", "Tailwind CSS", "FastAPI", "Python"],
+    "tech": ["React 19", "TypeScript", "Vite", "Tailwind CSS", "FastAPI", "Python", "PostgreSQL", "Recharts"],
     "featured": false,
     "mockupUrl": "bottleneck-calc.app",
     "images": {
@@ -65,38 +63,42 @@
     }
   },
   {
-    "slug": "minxlink",
-    "name": "Minxlink",
-    "tagline": "Multi-tenant URL shortener with geo-routing, A/B testing, and custom domains.",
-    "description": "Advanced URL shortener with multi-tenancy via Clerk Auth, custom domains, geo-based routing, device-based routing, A/B test splits, and Cloudflare Workers KV for sub-millisecond redirects. FastAPI + PostgreSQL + Redis backend, React + Vite frontend. Designed for marketing teams that need granular click-level attribution.",
-    "repo": "https://github.com/starkSV/minxlink-v2",
+    "slug": "msdl",
+    "name": "MSDL",
+    "tagline": "Download official Windows ISOs directly from Microsoft's CDN — no MCT, no account.",
+    "description": "Open-source tool that fetches official Windows ISO download links straight from Microsoft's CDN, bypassing the Media Creation Tool entirely. Supports 38 languages and ARM64/x64/x86. React 19 + TypeScript + Tailwind v4 frontend deployed via GitHub Pages; Go backend using stdlib net/http with RWMutex session caching and a separate legacy Python backend.",
+    "repo": "https://github.com/starkSV/msdl-new",
     "status": "live",
-    "year": 2025,
-    "tech": ["FastAPI", "PostgreSQL", "Redis", "Cloudflare Workers", "React", "Clerk"],
+    "year": 2024,
+    "tech": ["Go", "React 19", "TypeScript", "Tailwind CSS v4", "Framer Motion"],
     "featured": false,
-    "mockupUrl": "minxlink.app"
+    "mockupUrl": "msdl.app",
+    "images": {
+      "banner": "/assets/msdl-banner.jpg",
+      "screenshots": ["/assets/msdl-screenshot-1.jpg"]
+    }
   },
   {
     "slug": "skysift",
     "name": "SkySift",
-    "tagline": "India-focused aviation intelligence — live flight tracking, price discovery, AI route insights.",
-    "description": "Real-time aviation intelligence platform built for the Indian market. Pulls live flight data from OpenSky Network, processes it with FastAPI + PostgreSQL + Redis, and visualises it on Mapbox GL maps. AI-powered route insights via Claude API. State managed with Zustand; deployed via Docker Compose on Coolify.",
+    "tagline": "India aviation intelligence — live flight tracking, price discovery, AI route insights.",
+    "description": "Real-time aviation intelligence platform for the Indian market at skysift.in. Pulls live data from OpenSky Network, AeroDataBox, and Aviationstack via APScheduler polling; visualises it on Mapbox GL; and generates AI route insights using the Claude API. FastAPI + PostgreSQL + Redis + asyncpg backend; React 18 + TypeScript + Zustand state frontend.",
     "repo": "https://github.com/starkSV/skysift",
     "status": "wip",
     "year": 2025,
-    "tech": ["FastAPI", "Python", "Mapbox GL", "React", "TypeScript", "Claude API", "Redis"],
+    "tech": ["FastAPI", "Python", "PostgreSQL", "Redis", "Mapbox GL", "React 18", "TypeScript", "Zustand", "Claude API"],
     "featured": false,
-    "mockupUrl": "skysift.app"
+    "mockupUrl": "skysift.in"
   },
   {
     "slug": "win-perf-mon",
     "name": "WinPerfMon",
-    "tagline": "One app to replace Task Manager, HWiNFO, GPU-Z, and Wireshark on Windows.",
-    "description": "Native Windows performance monitor that consolidates CPU, GPU, RAM, disk, and network metrics into a single dark-themed WinUI 3 app. Powered by LibreHardwareMonitor and LiveChartsCore with a SQLite ring buffer for up to 30 days of history. Replaces multiple third-party tools with one cohesive experience.",
+    "tagline": "One dark-themed app to replace Task Manager, HWiNFO, GPU-Z, and Wireshark.",
+    "description": "Native Windows performance monitor built with .NET 8 and WinUI 3. Four-project architecture — App (UI), Collector (polling worker), Shared (models), Storage (SQLite ring buffer). Real-time charts via LiveChartsCore; hardware metrics via LibreHardwareMonitor; up to 30 days of history. Replaces a stack of third-party monitoring tools with one cohesive experience.",
     "repo": "https://github.com/starkSV/win-perf-mon",
     "status": "wip",
     "year": 2025,
-    "tech": ["C#", ".NET", "WinUI 3", "LibreHardwareMonitor", "SQLite", "LiveChartsCore"],
+    "tech": ["C#", ".NET 8", "WinUI 3", "Windows App SDK", "LiveChartsCore", "LibreHardwareMonitor", "SQLite"],
     "featured": false,
     "mockupUrl": "winperfmon.app"
   }
