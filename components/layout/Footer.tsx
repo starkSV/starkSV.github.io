@@ -10,11 +10,14 @@ export default function Footer() {
     >
       <span className="font-syne font-bold text-xl text-[var(--sv-text)]">SV.</span>
       <p className="font-mono text-xs text-[var(--sv-dim)]">
-        © {year} Shekhar Vaidya. Built with Next.js + Cloudflare.
+        © {year} Shekhar Vaidya · Uttarakhand, India
       </p>
-      <div className="flex gap-4">
-        <Link href="/blog"     className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">Blog</Link>
-        <Link href="/projects" className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">Projects</Link>
+      <div className="flex gap-5 flex-wrap">
+        <Link href="/blog"       className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">Blog</Link>
+        <Link href="/projects"   className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">Projects</Link>
+        <a href="https://github.com/starkSV"          target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">GitHub</a>
+        <a href="https://x.com/imsvaidya"             target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">X</a>
+        <a href="https://tech-latest.com"             target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-[var(--sv-dim)] hover:text-[var(--sv-muted)] transition-colors">TechLatest</a>
       </div>
     </footer>
   )

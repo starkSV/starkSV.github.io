@@ -1,14 +1,22 @@
 import PhysicalButton from '@/components/ui/PhysicalButton'
 
 const MARQUEE_TEXT = [
-  'Let\'s build together',
+  "Let's build together",
   'Available for freelance',
   'Open to collaborations',
   'Full-stack development',
-  'Let\'s build together',
+  "Let's build together",
   'Available for freelance',
   'Open to collaborations',
   'Full-stack development',
+]
+
+const SOCIALS = [
+  { label: 'GitHub',   href: 'https://github.com/starkSV' },
+  { label: 'Twitter',  href: 'https://x.com/imsvaidya' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shekhar-vaidya22/' },
+  { label: 'TechLatest', href: 'https://tech-latest.com' },
+  { label: 'XDA',      href: 'https://www.xda-developers.com/author/shekhar-vaidya/' },
 ]
 
 export default function Contact() {
@@ -21,7 +29,10 @@ export default function Contact() {
           style={{ animation: 'ticker-scroll 20s linear infinite' }}
         >
           {MARQUEE_TEXT.map((t, i) => (
-            <span key={i} className="font-syne font-bold text-[clamp(2rem,4vw,4rem)] text-[var(--sv-text)] whitespace-nowrap flex items-center gap-12">
+            <span
+              key={i}
+              className="font-syne font-bold text-[clamp(2rem,4vw,4rem)] text-[var(--sv-text)] whitespace-nowrap flex items-center gap-12"
+            >
               {t}
               <span className="text-[var(--sv-accent)]">·</span>
             </span>
@@ -34,22 +45,22 @@ export default function Contact() {
         <p className="font-mono text-xs text-[var(--sv-accent)] tracking-widest uppercase mb-4">Contact</p>
         <h2 className="font-syne font-bold text-4xl text-[var(--sv-text)] mb-4">Say hello.</h2>
         <p className="font-sans text-base text-[var(--sv-muted)] mb-10 max-w-md mx-auto">
-          I&apos;m currently available for freelance projects, consulting, and full-time opportunities.
+          Available for freelance projects, consulting, and full-time opportunities.
+          Writer by day, builder by night.
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap mb-12">
           <PhysicalButton href="mailto:shekharvaidya2@gmail.com" variant="light" data-cursor="email me">
             shekharvaidya2@gmail.com
           </PhysicalButton>
+          <PhysicalButton href="/assets/resume.pdf" variant="dark" data-cursor="download résumé">
+            Download Résumé
+          </PhysicalButton>
         </div>
 
         {/* social links */}
-        <div className="flex gap-6 justify-center">
-          {[
-            { label: 'GitHub', href: 'https://github.com/starkSV' },
-            { label: 'Twitter', href: '#' },
-            { label: 'LinkedIn', href: '#' },
-          ].map((s) => (
+        <div className="flex gap-6 justify-center flex-wrap">
+          {SOCIALS.map((s) => (
             <a
               key={s.label}
               href={s.href}

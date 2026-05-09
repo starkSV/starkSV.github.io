@@ -1,45 +1,41 @@
 ---
-title: Getting Started with Edge Functions
-date: 2024-11-15
-description: A practical guide to building fast, globally distributed functions on Cloudflare Workers.
-tags: [cloudflare, edge, typescript]
+title: Why I Moved Everything to Cloudflare's Edge
+date: 2025-02-18
+description: After running TechLatest on traditional hosting for years, here's what changed when I shifted to Cloudflare Workers and Pages — and what I learned building MSDL and FPS Calculator on the edge.
+tags: [cloudflare, edge, performance, web]
 published: true
 ---
 
-# Getting Started with Edge Functions
+# Why I Moved Everything to Cloudflare's Edge
 
-Edge functions let you run server-side code as close to your users as possible. Here's how to get started.
+After running TechLatest on managed WordPress hosting for years, I started noticing a pattern: the more I tried to optimise the server, the more I was fighting the infrastructure instead of building things.
 
-## Why Edge?
+When I started building my own tools — MSDL, FPS Calculator, Minxlink — I had a choice to make on where they'd live. I went all-in on Cloudflare, and it changed how I think about deployment entirely.
 
-Traditional server deployments put your code in one or a few regions. Edge deploys to hundreds of locations globally — requests are handled within milliseconds of the user.
+## The latency problem no one talks about
 
-## Hello World on Cloudflare Workers
+A reader in Mumbai hitting a server in Frankfurt adds 120–200ms of latency before a single byte is sent. On a WordPress blog that's bad enough. On a tool where someone is waiting for an API response, it's the difference between "fast" and "feels broken."
 
-```typescript
-export default {
-  async fetch(request: Request): Promise<Response> {
-    return new Response('Hello from the edge!', {
-      headers: { 'content-type': 'text/plain' },
-    })
-  },
-}
-```
+Edge workers execute in the data centre closest to the user. That Mumbai reader now gets sub-10ms response times on static routes.
 
-## Working with the Request
+## MSDL: a Go backend behind a Worker
 
-```typescript
-export default {
-  async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url)
-    const name = url.searchParams.get('name') ?? 'world'
-    return Response.json({ message: `Hello, ${name}!` })
-  },
-}
-```
+The MSDL backend is a Go service that parses Microsoft's session API and returns ISO download URLs. The Go service lives on a VPS; a Cloudflare Worker sits in front of it and handles:
 
-## Next Steps
+- Caching session tokens (5-minute TTL)
+- Rate limiting by IP
+- Serving the React frontend from Pages
 
-- Explore [Cloudflare Workers KV](https://developers.cloudflare.com/kv/) for key-value storage
-- Try [Durable Objects](https://developers.cloudflare.com/durable-objects/) for stateful edge logic
-- Use [D1](https://developers.cloudflare.com/d1/) for SQLite at the edge
+The Go service only gets hit on cache misses. 95% of requests are served from Worker memory.
+
+## FPS Calculator: edge-friendly FastAPI
+
+FastAPI doesn't run natively on Workers (Python runtime is experimental), so FPS Calculator uses a different split: the FastAPI backend lives behind Cloudflare Tunnels on a Coolify VPS, with Workers handling the CDN layer and edge caching for hot queries (popular CPU+GPU combos).
+
+The cache-hit rate on benchmark queries is about 80%, which means 80% of users never touch the Python service.
+
+## What I'd change
+
+The `@cloudflare/next-on-pages` adapter still has rough edges — some Next.js features need `export const runtime = 'edge'` annotations you don't know you've missed until the build fails. OpenNext is the better path going forward.
+
+But the core idea — run as close to the user as possible — has completely changed how I size and architect services.

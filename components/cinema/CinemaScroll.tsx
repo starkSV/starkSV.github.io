@@ -124,9 +124,9 @@ export default function CinemaScroll({ projects }: CinemaScrollProps) {
   }, [])
 
   const GLASS_BADGES = [
-    { icon: '⚡', label: 'Edge-first architecture' },
-    { icon: '🎨', label: 'Pixel-perfect UI' },
-    { icon: '🚀', label: 'Ships fast, ships clean' },
+    { icon: '⚡', label: '300K+ monthly readers' },
+    { icon: '🛠️', label: '5+ live projects shipped' },
+    { icon: '✍️', label: 'XDA · TechLatest · ESL' },
   ]
 
   return (
@@ -151,7 +151,7 @@ export default function CinemaScroll({ projects }: CinemaScrollProps) {
             </span>
           </h1>
           <p className="font-sans text-base text-[var(--sv-muted)] mt-6 text-center max-w-md">
-            Full-stack developer. Writer. I build fast, beautiful software.
+            Tech journalist. Full-stack developer. Founder of TechLatest.
           </p>
           <p className="font-mono text-xs text-[var(--sv-dim)] mt-12 tracking-widest animate-bounce">
             scroll to explore
@@ -178,10 +178,10 @@ export default function CinemaScroll({ projects }: CinemaScrollProps) {
               <OrbVisual />
               <div className="flex-1">
                 <p className="font-mono text-xs text-[var(--sv-accent)] tracking-widest uppercase mb-4">
-                  Developer & Writer
+                  Journalist · Developer · Builder
                 </p>
                 <h2 className="font-syne font-bold text-3xl text-[var(--sv-text)] leading-tight mb-6">
-                  Crafting experiences<br />at the edge of the web.
+                  8 years writing.<br />3 years building.
                 </h2>
                 <div className="flex flex-col gap-3">
                   {GLASS_BADGES.map((b, i) => (

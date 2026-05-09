@@ -1,73 +1,65 @@
 ---
-title: Building Cinematic Scroll Experiences with GSAP
-date: 2025-01-10
-description: How to create full-page scroll-driven animations that feel like cinema using GSAP ScrollTrigger.
-tags: [gsap, animation, react, frontend]
+title: Building a Cinematic Scroll Portfolio with GSAP
+date: 2025-04-05
+description: How I rebuilt this portfolio from a Vite+React static site into a cinematic scroll experience using GSAP ScrollTrigger, Framer Motion, and Lenis — and what I learned about animation architecture along the way.
+tags: [gsap, animation, react, nextjs, frontend]
 published: true
 ---
 
-# Building Cinematic Scroll Experiences with GSAP
+# Building a Cinematic Scroll Portfolio with GSAP
 
-Scroll-driven animations have evolved from simple parallax to full cinematic sequences. Let me show you how.
+My old portfolio was a Vite + React static site pushed to GitHub Pages. It worked, but it felt like every other developer portfolio — section by section, scroll past a hero, past an about, past projects.
 
-## The Core Concept
+I wanted something that felt like you were *watching something*, not reading a page. The constraint I set: the entire homepage should be a single animated experience, not a list of sections.
 
-The trick is to use a single ScrollTrigger that pins the entire viewport, then map scroll progress to a GSAP timeline. Your "sections" aren't actual scrollable sections — they're absolutely-positioned layers that GSAP shows and hides.
+## The core idea: one ScrollTrigger, everything pinned
+
+The trick is to give GSAP a single `ScrollTrigger` with a very long scroll distance (`end: "+=10000"`) and pin the container. Then instead of scrolling between sections, you map scroll progress to a timeline where sections animate in and out.
 
 ```typescript
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: containerRef.current,
     start: 'top top',
-    end: '+=10000',    // 10000px of scroll distance
+    end: '+=10000',
     pin: true,
-    scrub: 1.1,        // slight lag for cinematic feel
+    scrub: 1.1,       // the lag here is intentional — it gives weight
     anticipatePin: 1,
   },
 })
 ```
 
-## The Card Rise Animation
+The `scrub: 1.1` number matters. `scrub: true` snaps instantly; `scrub: 1` lags by 1 second; `scrub: 1.1` gives the animations a *physical* quality — like the content has inertia.
 
-```typescript
-// Card starts below the viewport
-gsap.set(card, { y: window.innerHeight + 200 })
+## The card: physical depth with CSS
 
-// Rises into frame
-tl.to(card, { y: 0, duration: 2, ease: 'power3.out' }, 0.5)
+The central element is a card that rises from below, then expands to fill the screen. The shadow stack is what makes it feel like a physical object:
 
-// Then expands to fill the screen
-tl.to(card, {
-  width: window.innerWidth,
-  height: window.innerHeight,
-  borderRadius: 0,
-  duration: 2,
-  ease: 'power3.inOut',
-}, 2.5)
+```css
+box-shadow:
+  0 50px 120px -20px rgba(0,0,0,.98),
+  0 25px 50px -15px rgba(0,0,0,.85),
+  inset 0 1px 2px rgba(255,255,255,.17),
+  inset 0 -2px 4px rgba(0,0,0,.9);
 ```
 
-## Managing Sections
+The `inset` shadows on the top and bottom edge simulate light hitting the card face — the top is slightly lighter, the bottom slightly darker.
+
+## Lenis + GSAP: the smooth scroll integration
+
+Raw browser scroll doesn't work well with GSAP ScrollTrigger — there's jitter on some devices. Lenis is a smooth scroll library that intercepts the scroll event and feeds it to GSAP directly:
 
 ```typescript
-// All sections start invisible
-gsap.set([s1, s2, s3], { autoAlpha: 0, position: 'absolute', inset: 0 })
-
-// Fade each section in and out at the right scroll position
-tl.to(s1, { autoAlpha: 1, duration: 0.5 }, 4.5)
-tl.to(s1, { autoAlpha: 0, duration: 0.5 }, 7.5)
-
-tl.to(s2, { autoAlpha: 1, duration: 0.5 }, 8.0)
-```
-
-## Smooth Scroll with Lenis
-
-```typescript
-import Lenis from 'lenis'
-
 const lenis = new Lenis()
 lenis.on('scroll', ScrollTrigger.update)
 gsap.ticker.add((time) => lenis.raf(time * 1000))
 gsap.ticker.lagSmoothing(0)
 ```
 
-The result is buttery-smooth scroll that feeds directly into your GSAP timeline.
+The key is `lagSmoothing(0)` — without it, GSAP drops frames to compensate for lag, which creates visible stutters during heavy animation.
+
+## What I'd do differently
+
+The `position: fixed` card creates a stacking context problem on mobile Safari. Some transform operations also force GPU compositing in unexpected ways — I had to audit which properties I was animating to avoid layout reflow.
+
+For a simpler implementation: consider using pure CSS `animation-timeline` with `scroll()`. It has no JavaScript overhead at all. But for complex sequences with multiple coordinated elements, GSAP is still the right tool.

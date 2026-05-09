@@ -27,18 +27,18 @@ const mono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Shekhar Vaidya — Developer & Writer',
-  description: 'I build things that matter. Full-stack developer and writer focused on fast, beautiful products.',
+  title: 'Shekhar Vaidya — Tech Journalist & Developer',
+  description: 'Founder of TechLatest, Computing Writer at XDA. I build tools at the intersection of deep hardware knowledge and full-stack engineering.',
   openGraph: {
-    title: 'Shekhar Vaidya — Developer & Writer',
-    description: 'I build things that matter.',
+    title: 'Shekhar Vaidya — Tech Journalist & Developer',
+    description: 'Founder of TechLatest. Computing Writer at XDA. Builder of FPS Calculator, MSDL, Pixlyzer, and more.',
     images: ['/og.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shekhar Vaidya — Developer & Writer',
-    description: 'I build things that matter.',
+    title: 'Shekhar Vaidya — Tech Journalist & Developer',
+    description: 'Founder of TechLatest. Computing Writer at XDA. Builder.',
     images: ['/og.png'],
   },
 }

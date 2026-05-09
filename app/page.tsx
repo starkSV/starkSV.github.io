@@ -5,8 +5,9 @@ import Footer from '@/components/layout/Footer'
 import { getFeaturedProjects } from '@/lib/projects'
 
 const TICKER_ITEMS = [
-  'Next.js 15', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Cloudflare Pages',
-  'Framer Motion', 'Python', 'MDX', 'Edge Runtime', 'shadcn/ui',
+  'Python · FastAPI', 'Go', 'React · TypeScript', 'Tailwind CSS',
+  'Cloudflare Workers', 'Docker · Coolify', 'PostgreSQL', 'GSAP',
+  'Next.js 15', 'WinUI 3 · C#', 'Framer Motion', 'XDA · TechLatest',
 ]
 
 export default function Home() {
