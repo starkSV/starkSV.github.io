@@ -14,14 +14,15 @@ export default function Home() {
   const projects = getFeaturedProjects()
 
   return (
-    <main>
+    <>
+      {/* Cinema scroll — renders fixed hero + fixed card + scroll spacer */}
       <CinemaScroll projects={projects} />
 
-      {/* Below-card content — visible after card exits */}
+      {/* Below-card content — sits in normal document flow after the 10000px spacer */}
       <div className="relative z-10">
         <div
           className="py-6 border-y"
-          style={{ borderColor: 'var(--sv-border)', background: 'rgba(3,5,9,.95)' }}
+          style={{ borderColor: 'var(--sv-border)', background: 'rgba(3,5,9,.98)' }}
         >
           <Ticker items={TICKER_ITEMS} />
         </div>
@@ -29,6 +30,6 @@ export default function Home() {
         <Contact />
         <Footer />
       </div>
-    </main>
+    </>
   )
 }
